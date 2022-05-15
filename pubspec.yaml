@@ -1,0 +1,45 @@
+name: qclinic
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.15.1 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.1
+  flutter: 
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_native_splash: ^2.1.6
+  get_storage: ^2.0.3
+  pin_code_fields: ^7.3.0 
+  flutter_slidable: ^1.2.0
+  table_calendar: ^3.0.5
+  dotted_border: ^2.0.0+2
+  curved_navigation_bar: ^1.0.3
+  adaptive_action_sheet: ^2.0.1
+  google_maps_place_picker: ^2.1.0-nullsafety.3
+
+dev_dependencies: 
+  flutter_lints: ^1.0.0
+  lints: 1.0.1
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/fonts/
+  fonts:
+    - family: El Messiri
+      fonts:
+        - asset: assets/fonts/ElMessiri-Bold.ttf
+        - asset: assets/fonts/ElMessiri-Medium.ttf
+        - asset: assets/fonts/ElMessiri-Regular.ttf
+        - asset: assets/fonts/ElMessiri-SemiBold.ttf
+       
+
+
