@@ -52,35 +52,129 @@ class LoginView extends GetView<LoginController> {
                       ),
                       Form(
                           key: controller.loginFormKey,
-                          child: BoxTextField(
-                              controller: controller.phoneController,
-                              keyboardType: TextInputType.text,
-                              onSaved: (value) {
-                                controller.phone = value;
-                              },
-                              validator: (value) {
-                                return controller.validateMobile(value!);
-                              },
-                              text: "رقم الهاتف")),
-                      Text(
-                        " الرجاء إدخال رقم الهاتف فقط وسوف تحصل على رمز التحقق الخاص بك",
-                        style: TextStyle(
-                            color: kblack,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w400),
-                      ),
+                          child: Column(
+                            children: [
+                              BoxTextField(
+                                  controller: controller.phoneController,
+                                  keyboardType: TextInputType.text,
+                                  onSaved: (value) {
+                                    controller.phone = value;
+                                  },
+                                  validator: (value) {
+                                    return controller.validateMobile(value!);
+                                  },
+                                  text: "رقم الهاتف أو البريد الالكتروني"),
+                           
+                              
+                                Obx(() => Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 8),
+                                        child: Text(
+                                          " كلمة المرور",
+                                            style: TextStyle(
+                fontWeight: FontWeight.bold, color: kblack, fontSize: 12),
+                                        ),
+                                      ),
+                                      TextFormField( textAlign: TextAlign.center,
+                                        autovalidateMode:
+                                            AutovalidateMode.onUserInteraction,
+                                        decoration: InputDecoration(
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: kbordergrey, width: 2),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: kbordergrey, width: 2),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                                  color: Colors.red),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                                  color: Colors.red),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            filled: true,
+                                            fillColor: kgrey,
+                                            contentPadding: EdgeInsets.all(12),
+                                            // hintText: '********',
+                                            suffixIcon: IconButton(
+                                              icon: controller
+                                                      .obscureText.value
+                                                  ? Icon(Icons
+                                                      .visibility_off_outlined)
+                                                  : Icon(Icons
+                                                      .visibility_outlined),
+                                              onPressed: () {
+                                                controller.changPassVisiblit();
+                                              },
+                                            )),
+                                        keyboardType:
+                                            TextInputType.visiblePassword,
+                                        obscureText:
+                                            controller.obscureText.value,
+                                        controller: controller
+                                            .passwordController,
+                                        onSaved: (value) {
+                                          controller.password = value!;
+                                        },
+                                        onChanged: (value) {
+                                          controller.password = value;
+                                        },
+                                        validator: (value) {
+                                          return controller
+                                              .validatePassword(value!);
+                                        },
+                                      ),
+                                    ],
+                                  )),    Row(
+                     mainAxisAlignment: MainAxisAlignment.end,
+                     children: [
+                       TextButton(
+                         onPressed: () {
+                           //Get.toNamed(Routes.VERIFY_REST_PASSWORD);
+                         },
+                         child: Text(
+                           'هل نسيت كلمة المرور ؟',
+                           style: TextStyle(
+                             color: kblue,
+                             fontSize: 14,
+                             fontWeight: FontWeight.w600,
+                           ),
+                         ),
+                       ),
+                   
+                     ],
+                   ),
+                              ],
+                          ), ),
+                      
                       SizedBox(
                         height: heightApp * 0.04,
                       ),
                       MainButton(
-                          text: "إحصل على رمز التحقق",
+                          text: "تسجيل الدخول",
                           press: () {
-                            // controller.checkLogin();
-                                                              Get.toNamed(Routes.OTP);
-
+                            //controller.checkLogin();
+                                                             
+ Get.offAndToNamed(Routes.BASIC);
                           }),
                       SizedBox(
-                        height: heightApp * 0.10,
+                        height: heightApp * 0.05,
                       ),
                       Padding(
                           padding: const EdgeInsets.all(8.0),

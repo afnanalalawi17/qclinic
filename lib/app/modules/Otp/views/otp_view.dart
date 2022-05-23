@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_countdown_timer/current_remaining_time.dart';
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -46,17 +48,27 @@ class OtpView extends GetView<OtpController> {
                     SizedBox(
                       height: heightApp * 0.25,
                     ),
-                    Center(
-                      child: Text(
-                        "تم إرسال رمز التحقق إلى 0563883383",
-                        style: TextStyle(
-                            color: kblack,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold),
-                      ),
+                    Row(crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "تم إرسال رمز التحقق إلى ",
+                          style: TextStyle(
+                              color: kblack,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      Text(
+                              "4455657667",
+                              style: TextStyle(
+                                  color: kblue,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            )
+                      ],
                     ),
                     Form(
-                     key: controller.otpFormKey,
+                      key: controller.otpFormKey,
                       child: Column(
                         children: [
                           Padding(
@@ -76,6 +88,7 @@ class OtpView extends GetView<OtpController> {
                                     shape: PinCodeFieldShape.box,
                                     fieldWidth: 55,
                                     fieldHeight: 50,
+
                                     // activeColor: controller.codeError.value
                                     //     ? Colors.red
                                     //     : Colors.green,
@@ -93,7 +106,7 @@ class OtpView extends GetView<OtpController> {
                                   // errorAnimationController: errorController,
                                   controller: controller.otpController,
                                   onCompleted: (value) {
-                                       controller.otp = value;
+                                    controller.otp = value;
                                   },
                                   onChanged: (value) {},
                                   validator: (value) {
@@ -107,30 +120,165 @@ class OtpView extends GetView<OtpController> {
                                   },
                                 )),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20,right: 20),
-                            child: MainButton(text: "تحقق", press: () {                                  Get.toNamed(Routes.BASIC);
-}),
-                          ),SizedBox(height: heightApp*0.05,),
-                            TextButton(
-                                onPressed: () {
-                                  // Get.toNamed(Routes.BASIC);
-                                },
-                                child: Text('إعادة الإرسال',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        decoration: TextDecoration.underline,
-                                        color: kblack,
-                                        fontWeight: FontWeight.bold)),
-                              ),
+                          Obx(() {
+              if (controller.timeOutTimer.isFalse ||
+                  controller.codeError.isFalse) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  child: MainButton(
+                      text: "تأكيد",
+                      press: () {
+                           Get.offAndToNamed(Routes.BASIC);
+                       // controller.checkDone();
+                      }),
+                );
+              } else {
+                return Container();
+              }
+            }), SizedBox(
+                  height: heightApp * 0.03,
+                ),   
+                Obx(() {
+              if (controller.codeError.isFalse) {
+                return Center(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'إعادة الارسال خلال',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16,
+                              //  color: KColor_Text_Main_2,
+                            ),
+                          ),
+                          !controller.timeOutTimer.value || controller.codeError.value 
+                          ? Timer( controller: controller,)
+                          : Text(
+                            ' 0',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16,
+                              //    color: KColor_Text_Main_2,
+                            ),
+                          ),
+                          Text(
+                            ' ثانية',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16,
+                              //    color: KColor_Text_Main_2,
+                            ),
+                          ),
+                      
                         ],
                       ),
+                      controller.timeOutTimer.value || controller.codeError.value ? Center(
+                      child: TextButton(
+                        onPressed: () {
+                          
+                         
+                          controller.endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 30;
+                     //   controller.getTOPAgain();
+                          controller.timeOutTimer.value = true;
+                          
+                      
+                         controller.onStartTimer();
+                        },
+                        child: Text(
+                          'إعادة ارسال الرسالة',
+                        ),
+                      ),
+                ) : Container()
+                    ],
+                  ),
+                );
+              } else {
+                return Container();
+              }
+            
+            }),
+            Obx(() {
+              if (controller.codeError.isTrue) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: Center(
+                    child: Center(
+                      child: Text(
+                        'الرقم الذي قمت بادخاله لا يتوافق مع الكود المرسل الرجاء المحاولة مرة اخرى',
+                        textAlign: TextAlign.center,
+                        //  style: KText_Style_16,
+                      ),
                     ),
-                  ],
-                ),
-              )
-            ],
-          ))
-    ]));
+                  ),
+                );
+              } else{
+                return Container();
+              }
+               
+            }),
+           
+            
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     children: [
+            //       Text('لم يتم إرسال الرمز ؟',
+            //           style: TextStyle(
+            //               fontSize: 16,
+            //               color: kblack,
+            //               fontWeight: FontWeight.bold)),
+            //       SizedBox(
+            //         width: widthApp * 0.01,
+            //       ),
+            //       TextButton(
+            //         onPressed: () {
+            //           // Get.toNamed(Routes.LOGIN);
+            //         },
+            //         child: Text('إرسال رمز جديد ',
+            //             style: TextStyle(
+            //                 fontSize: 16,
+            //                 color: kblue,
+            //                 fontWeight: FontWeight.bold)),
+            //       ),
+            //     ],
+            //   )),
+          ],
+        ),
+      ),
+    ]))]))]));
+  }
+}
+
+class Timer extends StatelessWidget {
+  const Timer({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
+
+  final OtpController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return CountdownTimer(
+      endTime: DateTime.now().millisecondsSinceEpoch + 1000 * 30,
+      onEnd: controller.onEnd,
+      widgetBuilder: (_, CurrentRemainingTime? time) {
+        if (time == null) {
+          return Text('0');
+        }
+        return Text(
+          '${time.sec}',
+          style: TextStyle(
+            fontSize: 16,
+            // color: KColor_Text_Main_2,
+          ),
+        );
+      },
+    );
   }
 }

@@ -13,6 +13,7 @@ void main() async {
   await GetStorage.init();
   onBoarding = GetStorage().read('onBoardin');
   runApp(GetMaterialApp(
+     debugShowCheckedModeBanner: false,
     localizationsDelegates: const [
       GlobalCupertinoLocalizations.delegate,
       GlobalMaterialLocalizations.delegate,

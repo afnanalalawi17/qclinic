@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:qclinic/Shared/color/colors.dart';
+import 'package:qclinic/Shared/style/Text_style.dart';
 import 'package:qclinic/Shared/widget/constants.dart';
 import 'package:qclinic/Shared/widget/main_button.dart';
 import 'package:qclinic/app/routes/app_pages.dart';
@@ -80,58 +81,64 @@ class ProfileView extends GetView<ProfileController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                    height: 50,
-                    width: 162,
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          gradient: LinearGradient(
-                              colors: [
-                                const Color(0xFF628B8C),
-                                const Color(0xFF9ED0D2),
-                              ],
-                              begin: const FractionalOffset(0.0, 0.0),
-                              end: const FractionalOffset(1.0, 0.0),
-                              stops: [0.0, 1.0],
-                              tileMode: TileMode.clamp),
-                        ),
-                        child: Center(
-                            child: Text(
-                          "0566220639",
-                          style: TextStyle(
-                              color: kwhite,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
-                        )))),
-                SizedBox(
-                  width: widthApp * 0.02,
+                Row(
+                  children: [
+                    Icon(Icons.phone_in_talk_outlined,color: kblack,),
+                
+                Text(
+                  "0566220639",
+                  style: TextStyle(
+                  color: kblack,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold),
+                ), ],
                 ),
-                SizedBox(
-                    height: 50,
-                    width: 162,
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          gradient: LinearGradient(
-                              colors: [
-                                const Color(0xFF628B8C),
-                                const Color(0xFF9ED0D2),
-                              ],
-                              begin: const FractionalOffset(0.0, 0.0),
-                              end: const FractionalOffset(1.0, 0.0),
-                              stops: [0.0, 1.0],
-                              tileMode: TileMode.clamp),
-                        ),
-                        child: Center(
-                            child: Text(
-                          "afalalawi@hotmail.com",
-                          style: TextStyle(
-                              color: kwhite,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
-                        )))),
+               
+                Row(
+                  children: [
+                      Icon(Icons.email_outlined,color: kblack,),
+                    Text(
+                      "afalalawi@hotmail.com",
+                      style: TextStyle(
+                      color: kblack,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ],
+            ), SizedBox(
+              height: heightApp * 0.03,
+            ),Center(
+              child: SizedBox(
+      height: heightApp * 0.055,
+      width: widthApp*0.55,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: kblue,
+          shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        ),
+        onPressed: ()
+        {
+          
+         // Get.toNamed(Routes.EDIT_PROFILE);
+          
+          },
+        child: Center(
+          child: Row(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("assets/images/edit.png"),
+              SizedBox(width: widthApp*0.02,),
+              Text(
+                  "تعديل البيانات",
+                  style: kWhite_text,
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
             ),
             SizedBox(
               height: heightApp * 0.03,
@@ -403,7 +410,7 @@ class ProfileView extends GetView<ProfileController> {
               ],
             ),
 SizedBox(height: heightApp*0.04,),
-            MainButton(text: "تعديل البيانات", press: (){})
+          
           ],
         ),
       ),

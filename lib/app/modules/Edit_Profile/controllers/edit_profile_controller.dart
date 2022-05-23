@@ -7,8 +7,9 @@ import 'package:qclinic/app/data/Services/Login_Stat_Controller.dart';
 import 'package:qclinic/app/data/Services/signup_services.dart';
 import 'package:qclinic/app/routes/app_pages.dart';
 
-class SignupController extends GetxController {
-      final loginState = Get.put(LoginStateController());
+class EditProfileController extends GetxController {
+  //TODO: Implement EditProfileController
+  final loginState = Get.put(LoginStateController());
 
   //TODO: Implement SignupController
 final GlobalKey<FormState> SignuoFormKey = GlobalKey<FormState>(); // Form

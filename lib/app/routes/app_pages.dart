@@ -20,6 +20,8 @@ import '../modules/Detials_Adaptation/bindings/detials_adaptation_binding.dart';
 import '../modules/Detials_Adaptation/views/detials_adaptation_view.dart';
 import '../modules/Detials_shop/bindings/detials_shop_binding.dart';
 import '../modules/Detials_shop/views/detials_shop_view.dart';
+import '../modules/Edit_Profile/bindings/edit_profile_binding.dart';
+import '../modules/Edit_Profile/views/edit_profile_view.dart';
 import '../modules/Favorite/bindings/favorite_binding.dart';
 import '../modules/Favorite/views/favorite_view.dart';
 import '../modules/Get_Location/bindings/get_location_binding.dart';
@@ -48,7 +50,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SIGNUP;
+  static const INITIAL = Routes.BOARDING;
 
   static final routes = [
     GetPage(
@@ -155,6 +157,11 @@ class AppPages {
       name: _Paths.GET_LOCATION,
       page: () => GetLocationView(),
       binding: GetLocationBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_PROFILE,
+      page: () => EditProfileView(),
+      binding: EditProfileBinding(),
     ),
   ];
 }

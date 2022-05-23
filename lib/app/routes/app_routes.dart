@@ -24,6 +24,7 @@ abstract class Routes {
   static const ADD_ANIMALE = _Paths.ADD_ANIMALE;
   static const BASIC = _Paths.BASIC;
   static const GET_LOCATION = _Paths.GET_LOCATION;
+  static const EDIT_PROFILE = _Paths.EDIT_PROFILE;
 }
 
 abstract class _Paths {
@@ -49,4 +50,5 @@ abstract class _Paths {
   static const ADD_ANIMALE = '/add-animale';
   static const BASIC = '/basic';
   static const GET_LOCATION = '/get-location';
+  static const EDIT_PROFILE = '/edit-profile';
 }

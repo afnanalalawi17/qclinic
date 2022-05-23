@@ -29,27 +29,32 @@ class AddAdaptationView extends GetView<AddAdaptationController> {
               style: TextStyle(
                   color: kblack, fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
-                height: 42,
-                width: 42,
-                child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                          colors: [
-                            const Color(0xFF628B8C),
-                            const Color(0xFF9ED0D2),
-                          ],
-                          begin: const FractionalOffset(0.0, 0.0),
-                          end: const FractionalOffset(1.0, 0.0),
-                          stops: [0.0, 1.0],
-                          tileMode: TileMode.clamp),
-                    ),
-                    child: Icon(
-                      Icons.arrow_forward_ios_rounded,
-                      color: kwhite,
-                      size: 25.0,
-                    ))),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(Routes.ADAPTATION);
+              },
+              child: SizedBox(
+                  height: 42,
+                  width: 42,
+                  child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: LinearGradient(
+                            colors: [
+                              const Color(0xFF628B8C),
+                              const Color(0xFF9ED0D2),
+                            ],
+                            begin: const FractionalOffset(0.0, 0.0),
+                            end: const FractionalOffset(1.0, 0.0),
+                            stops: [0.0, 1.0],
+                            tileMode: TileMode.clamp),
+                      ),
+                      child: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: kwhite,
+                        size: 25.0,
+                      ))),
+            ),
           ],
         ),
       ),

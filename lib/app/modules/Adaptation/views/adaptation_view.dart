@@ -27,7 +27,7 @@ class AdaptationView extends GetView<AdaptationController> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pop();
+                Get.toNamed(Routes.BASIC);
                 },
                 child: SizedBox(
                     height: 42,

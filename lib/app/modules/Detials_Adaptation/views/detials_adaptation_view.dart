@@ -5,35 +5,85 @@ import 'package:get/get.dart';
 import 'package:qclinic/Shared/color/colors.dart';
 import 'package:qclinic/Shared/widget/constants.dart';
 import 'package:qclinic/Shared/widget/main_button.dart';
+import 'package:qclinic/app/routes/app_pages.dart';
 
 import '../controllers/detials_adaptation_controller.dart';
 
 class DetialsAdaptationView extends GetView<DetialsAdaptationController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(appBar: AppBar(
+         automaticallyImplyLeading: false,
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+  Text(
+                  "حيوان التبني",
+                  style: TextStyle(
+                      color: kblack, fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                GestureDetector(
+                  onTap: () {
+                                         Get.toNamed(Routes.ADAPTATION);
+
+                  },
+                  child: SizedBox(
+                      height: 42,
+                      width: 42,
+                      child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(
+                                colors: [
+                                  const Color(0xFF628B8C),
+                                  const Color(0xFF9ED0D2),
+                                ],
+                                begin: const FractionalOffset(0.0, 0.0),
+                                end: const FractionalOffset(1.0, 0.0),
+                                stops: [0.0, 1.0],
+                                tileMode: TileMode.clamp),
+                          ),
+                          child: Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            color: kwhite,
+                            size: 25.0,
+                          ))),
+                ),
+            ],),
+      ),
       body: SingleChildScrollView(
         child: Stack(
           children: [
             Image.asset("assets/images/img.png"),
-            Padding(
-              padding: const EdgeInsets.only(top: 40, left: 20),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: SizedBox(
-                    height: 42,
-                    width: 42,
-                    child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: kwhite),
-                        child: Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          color: kblue,
-                          size: 25.0,
-                        ))),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 40, left: 20),
+            //   child: GestureDetector(
+            //         onTap: () {
+            //              Get.toNamed(Routes.ADAPTATION);
+            //         },
+            //     child: Align(
+            //       alignment: Alignment.topLeft,
+            //       child: GestureDetector(
+            //         onTap: () {
+            //              Get.toNamed(Routes.ADAPTATION);
+            //         },
+            //         child: SizedBox(
+            //             height: 42,
+            //             width: 42,
+            //             child: Container(
+            //                 decoration: BoxDecoration(
+            //                     borderRadius: BorderRadius.circular(10),
+            //                     color: kwhite),
+            //                 child: Icon(
+            //                   Icons.arrow_forward_ios_rounded,
+            //                   color: kblue,
+            //                   size: 25.0,
+            //                 ))),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             SingleChildScrollView(
                 child: Padding(
                     padding:

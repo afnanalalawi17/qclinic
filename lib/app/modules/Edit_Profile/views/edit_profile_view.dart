@@ -7,9 +7,9 @@ import 'package:qclinic/Shared/widget/constants.dart';
 import 'package:qclinic/Shared/widget/main_button.dart';
 import 'package:qclinic/app/routes/app_pages.dart';
 
-import '../controllers/signup_controller.dart';
+import '../controllers/edit_profile_controller.dart';
 
-class SignupView extends GetView<SignupController> {
+class EditProfileView extends GetView<EditProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +37,7 @@ class SignupView extends GetView<SignupController> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        "تسجيل جديد ",
+                        "تعديل المعلومات",
                         style: TextStyle(
                             color: kwhite,
                             fontSize: 24,
@@ -157,136 +157,94 @@ class SignupView extends GetView<SignupController> {
                                     ],
                                   )), SizedBox(
           height: heightApp * 0.01,
-        ), 
-        
-        
-        // Obx(() => Column(
-        //                             crossAxisAlignment:
-        //                                 CrossAxisAlignment.start,
-        //                             children: [
-        //                               Padding(
-        //                                 padding:
-        //                                     const EdgeInsets.only(right: 8),
-        //                                 child: Text(
-        //                                   "تاكيد كلمة المرور",
-        //                                    style: TextStyle(
-        //         fontWeight: FontWeight.bold, color: kblack, fontSize: 12),
-        //                                 ),
-        //                               ),
-        //                               TextFormField( textAlign: TextAlign.center,
-        //                                 autovalidateMode:
-        //                                     AutovalidateMode.onUserInteraction,
-        //                                 decoration: InputDecoration(
-        //                                     enabledBorder: OutlineInputBorder(
-        //                                       borderSide: BorderSide(
-        //                                           color: kbordergrey, width: 2),
-        //                                       borderRadius:
-        //                                           BorderRadius.circular(20.0),
-        //                                     ),
-        //                                     focusedBorder: OutlineInputBorder(
-        //                                       borderSide: BorderSide(
-        //                                           color: kbordergrey, width: 2),
-        //                                       borderRadius:
-        //                                           BorderRadius.circular(20.0),
-        //                                     ),
-        //                                     focusedErrorBorder:
-        //                                         OutlineInputBorder(
-        //                                       borderSide: const BorderSide(
-        //                                           color: Colors.red),
-        //                                       borderRadius:
-        //                                           BorderRadius.circular(20.0),
-        //                                     ),
-        //                                     errorBorder: OutlineInputBorder(
-        //                                       borderSide: const BorderSide(
-        //                                           color: Colors.red),
-        //                                       borderRadius:
-        //                                           BorderRadius.circular(20.0),
-        //                                     ),
-        //                                     filled: true,
-        //                                     fillColor: kgrey,
-        //                                     contentPadding: EdgeInsets.all(12),
+        ), Obx(() => Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 8),
+                                        child: Text(
+                                          "تاكيد كلمة المرور",
+                                           style: TextStyle(
+                fontWeight: FontWeight.bold, color: kblack, fontSize: 12),
+                                        ),
+                                      ),
+                                      TextFormField( textAlign: TextAlign.center,
+                                        autovalidateMode:
+                                            AutovalidateMode.onUserInteraction,
+                                        decoration: InputDecoration(
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: kbordergrey, width: 2),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: kbordergrey, width: 2),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                                  color: Colors.red),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                                  color: Colors.red),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            filled: true,
+                                            fillColor: kgrey,
+                                            contentPadding: EdgeInsets.all(12),
                                             
-        //                                     suffixIcon: IconButton(
-        //                                       icon: controller
-        //                                               .obscureText1.value
-        //                                           ? Icon(Icons
-        //                                               .visibility_off_outlined)
-        //                                           : Icon(Icons
-        //                                               .visibility_outlined),
-        //                                       onPressed: () {
-        //                                         controller.changPassVisiblit1();
-        //                                       },
-        //                                     )),
-        //                                 keyboardType:
-        //                                     TextInputType.visiblePassword,
-        //                                 obscureText:
-        //                                     controller.obscureText1.value,
-        //                                 controller: controller
-        //                                     .confirm_passwordController,
-        //                                 onSaved: (value) {
-        //                                   controller.confirm_password = value!;
-        //                                 },
-        //                                 onChanged: (value) {
-        //                                   controller.confirm_password = value;
-        //                                 },
-        //                                 validator: (value) {
-        //                                   return controller
-        //                                       .validateRePassword(value!);
-        //                                 },
-        //                               ),
-        //                             ],
-        //                           )),
+                                            suffixIcon: IconButton(
+                                              icon: controller
+                                                      .obscureText1.value
+                                                  ? Icon(Icons
+                                                      .visibility_off_outlined)
+                                                  : Icon(Icons
+                                                      .visibility_outlined),
+                                              onPressed: () {
+                                                controller.changPassVisiblit1();
+                                              },
+                                            )),
+                                        keyboardType:
+                                            TextInputType.visiblePassword,
+                                        obscureText:
+                                            controller.obscureText1.value,
+                                        controller: controller
+                                            .confirm_passwordController,
+                                        onSaved: (value) {
+                                          controller.confirm_password = value!;
+                                        },
+                                        onChanged: (value) {
+                                          controller.confirm_password = value;
+                                        },
+                                        validator: (value) {
+                                          return controller
+                                              .validateRePassword(value!);
+                                        },
+                                      ),
+                                    ],
+                                  )),
                             ],
                           )),
                       SizedBox(
                         height: heightApp * 0.04,
                       ),
                       MainButton(
-                          text: "تسجيل",
+                          text: "تعديل",
                           press: () {
-                             Get.toNamed(Routes.OTP);
-                           // controller.checkSignup();
+                            controller.checkSignup();
                           }),
                      
-                      Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(' لديك حساب ؟',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: kblack,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(
-                                width: widthApp * 0.01,
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Get.toNamed(Routes.LOGIN);
-                                },
-                                child: Text('تسجيل الدخول',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: kblue,
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ],
-                          )),
-                      Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.toNamed(Routes.BASIC);
-                          },
-                          child: Text(' الدخول كـ زائر',
-                              style: TextStyle(
-                                  decoration: TextDecoration.underline,
-                                  fontSize: 14,
-                                  color: kblack,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      ),
+                    
                     ],
                   ),
                 ),
